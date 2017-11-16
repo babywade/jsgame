@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>my first JavaScript procedure </title>
+    <script>
+        function clickSex(ctype) {
+            if (ctype == "man") {
+                document.getElementById("man").style.display = "block";
+                document.getElementById("miss").style.display = "none";
+            }
+
+            if (ctype == "miss") {
+                document.getElementById("man").style.display = "none";
+                document.getElementById("miss").style.display = "block";
+            }
+        }
+
+        function isOk() {
+            return confirm("Really commit?");
+        }
+
+        function outPrint(name, age, money, result) {
+            var str = "Hello" + name + "<br>you are" + age + "<br>your month salary:" + money + "<br>your month result is:" + result + "<br>Thanks!";
+            document.write(str);
+        }
+
+        function getResult() {
+            var sex1 = document.getElementById("sex1").checked;
+            var sex2 = document.getElementById("sex2").checked;
+
+            var yourmoney = document.getElementById("yourmoney").value;
+            var yoursmoke = document.getElementById("yoursmoke").value;
+            var yourwine = document.getElementById("yourwine").value;
+            var yourface = document.getElementById("yourface").value;
+            var yourclothe = document.getElementById("yourclothe").value;
+
+            var result = 0;
+
+            if (sex1 == true) {
+                result = yourmoney - yoursmoke - yourwine;
+            }
+
+            if (sex2 == true) {
+                result = yourmoney - yourface - yourclothe;
+            }
+
+            return result;
+        }
+
+        function mainClick() {
+            var isok = isOk();
+
+            if (isok == true) {
+                var yourname = document.getElementById("yourname").value;
+                var yourage = document.getElementById("yourage").value;
+                var yourmoney = document.getElementById("yourmoney").value;
+
+                var yourresult = getResult();
+                outPrint(yourname, yourage, yourmoney, yourresult);
+            }
+        }
+    </script>
+</head>
+<body>
+    <form name = "myform">
+        <input type = "radio" id = "sex1" name = "sex" value = "sir" 
+        onclick="clickSex('man')">man
+        <input type = "radio" id = "sex2" name = "sex" value = "madam" 
+        onclick="clickSex('miss')">miss<br/>
+        name:<br/>
+        <input type = "text" id = "yourname" name = "yourname" value = ""><br/>
+        age:<br/>
+        <input type = "text" id = "yourage" name = "yourage" value = ""><br/>
+        month salary:<br/>
+        <input type = "text" id = "yourmoney" name = "yourmoney" value = ""><br/>
+
+        <div id = "man" style = "display:none">
+            smoke:<br/>
+            <input type = "text" id = "yoursmoke" name = "yoursmoke" value = ""><br/>
+            wine:<br/>
+            <input type = "text" id = "yourwine" name = "yourwine" value = ""><br/>
+        </div>
+
+        <div id = "miss" style = "display:none">
+            face:<br/>
+            <input type = "text" id = "yourface" name = "yourface" value = ""><br/>
+            clothe:<br/>
+            <input type = "text" id = "yourclothe" name = "yourclothe" value = ""><br/>
+        </div>
+        <hr>
+        <input type = "button" value = "commit" onclick="mainClick()">
+        <input type = "button" value = "recomplete">
+    </form>
+</body>
+</html>
